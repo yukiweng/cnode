@@ -47,6 +47,7 @@
 		float: right;
 		max-width: 300px;
 		font-size: 14px;
+    margin-left:40px;
 	}
 	.SlideBar>*>*{
 		padding: 10px

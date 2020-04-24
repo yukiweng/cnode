@@ -56,8 +56,7 @@
 <style scoped>
 .UserInfo{
 	background-color: rgb(225,225,225);
-	margin:20px 60px;
-	width: 75%;
+	width: 80vw;
 	font-size: 14px;
 }
 .UserInfo>*{

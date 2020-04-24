@@ -3,13 +3,9 @@
   <Loading v-if="loading" class="loading"/>
     <div class="postList" v-else>
       	<ul>
-      		<li class="liNavBar">
-      			<a @click="getData($event)" class="active" href="#">全部</a>
-      			<a @click="getData($event,'good')" href="#">精华</a>
-      			<a @click="getData($event,'share')" href="#">分享</a>
-      			<a @click="getData($event,'ask')" href="#">问答</a>
-      			<a @click="getData($event,'job')" href="#">招聘</a>
-      		</li>
+          <li class="liNavBar">
+            <a v-for="(tab,key) in tabs" @click="getData(key)" :class="{active: currentTab === key}" href="#">{{tab}}</a>
+          </li>
       		<li v-for="item in dataList">
       			<img :src="item.author.avatar_url" alt="">
       			<span class="replyAndVisit">
@@ -42,27 +38,30 @@
                 loading:true,
                 dataList: [],
                 currentPage: 1,
-                myTab: '',
-                currentTag: ''
+                currentTab: '',
+                tabs:{
+                    'all':'全部',
+                    'good':'精华',
+                    'share':'分享',
+                    'ask':'问答',
+                    'job':'招聘'
+                }
             }
         },
         components: {
             Pagination, Loading
         },
         methods: {
-            getData(event = '', myTab = '') {
-                this.myTab = myTab
-                if (event) {
-                    this.currentTag = $(event.currentTarget)
-                    this.currentTag.addClass('active').siblings('.active').removeClass('active')
+            getData(tab) {
+                if(tab) {
+                    this.currentTab = tab
                 }
                 this.$http.get('https://cnodejs.org/api/v1/topics', {
                     params: {
                         page: this.currentPage,
                         limit: 20,
-                        tab: this.myTab
+                        tab: this.currentTab
                     }
-
                 }).then(res => {
                     this.dataList = res.data.data
                     this.loading = false
@@ -70,11 +69,11 @@
             }
         },
         beforeMount() {
-            this.getData()
+            this.getData('all')
         },
         watch: {
             currentPage(val, old) {
-                this.getData(val, this.myTab)
+                this.getData()
             }
         }
     }
@@ -89,10 +88,10 @@
     top: 50%;
   }
   .postList {
-    margin: 20px 60px;
     background-color: rgb(255, 255, 255);
     position: relative;
     font-size: 12px;
+    width:80vw;
   }
 
   .liNavBar {

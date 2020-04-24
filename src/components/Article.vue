@@ -89,8 +89,7 @@ import markdown from 'github-markdown-css'
 
 .article{
 	background-color: rgb(225,225,225);
-	margin:0 60px;
-	width: 75%;
+	width: 70%;
 	font-size: 14px;
 }
 .article>*{

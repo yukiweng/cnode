@@ -26,13 +26,13 @@ a:hover{text-decoration:underline;}
 #app{
   background-color: rgb(225,225,225);
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  height: 100vh;
+  overflow: auto;
 }
 .main{
-  width: 80%;
-  margin:20px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin:20px 60px;
 }
 </style>
