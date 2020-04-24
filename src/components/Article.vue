@@ -1,5 +1,5 @@
 <template>
-<div class="article">
+<div class="article" v-if="!loading">
 	<div>
 	<div class="header">
 		<div>
@@ -54,7 +54,12 @@ import markdown from 'github-markdown-css'
 	export default {
 		name:'Article',
 		data(){
-			return {topicData:{},replies:[],author:{}}
+			return {
+			    loading:true,
+			    topicData:{},
+          replies:[],
+          author:{}
+			}
 		},
 		methods:{
 			getData(){
@@ -65,6 +70,7 @@ import markdown from 'github-markdown-css'
 				.then(res=>{
 					this.topicData=res.data.data
 					this.replies=this.topicData.replies
+          this.loading = false
 				})
 				.catch()
 			}

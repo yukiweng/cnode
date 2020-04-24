@@ -1,5 +1,5 @@
 <template>
-	<div class="SlideBar">
+	<div class="SlideBar" v-if="!loading">
 		<div class="userCard">
 			<p>作者</p>
 			<span class="userInfo">
@@ -27,13 +27,21 @@
 	export default {
 		name:'SlideBar',
 		data(){
-			return {userInfo:{},topics:[]}
+			return {
+			    loading:true,
+			    userInfo:{},
+          topics:[]
+			}
 		},
 		methods:{
 			getData(){
 				var name=this.$route.params.name
 				this.$http.get(`https://cnodejs.org/api/v1/user/${name}`)
-				.then(res=>{this.userInfo=res.data.data;this.topics=this.userInfo.recent_topics})
+				.then(res=>{
+				    this.userInfo=res.data.data
+				    this.topics=this.userInfo.recent_topics
+            this.loading = false
+				})
 			}
 		},
 		beforeMount(){

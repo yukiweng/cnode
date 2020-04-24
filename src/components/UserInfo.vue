@@ -1,5 +1,5 @@
 <template>
-	<div class="UserInfo">
+	<div class="UserInfo" v-if="!loading">
 		<div class="userInformation">
 			<span>
 				<img :src="userInfo.avatar_url" alt="">
@@ -34,16 +34,21 @@
 	export default {
 		name:'UserInfo',
 		data(){
-			return {userInfo:{},replies:[],topics:[]}
+			return {
+			    loading:true,
+			    userInfo:{},
+          replies:[],
+          topics:[]
+			}
 		},
 		methods:{
 			getData(){
-
 				this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.loginname}`)
 				.then(res=>{
 					this.userInfo=res.data.data;
 					this.replies=this.userInfo.recent_replies
 					this.topics=this.userInfo.recent_topics
+          this.loading = false
 				})
 			}
 		},
