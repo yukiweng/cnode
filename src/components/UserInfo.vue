@@ -1,9 +1,9 @@
 <template>
 	<div class="UserInfo">
-		<div class="userInformation">			
+		<div class="userInformation">
 			<span>
 				<img :src="userInfo.avatar_url" alt="">
-				<span>{{userInfo.loginname}}</span>	
+				<span>{{userInfo.loginname}}</span>
 			</span>
 			<span>注册积分 {{userInfo.score}}</span>
 			<span>gitHub {{userInfo.githubUsername}}</span>
@@ -23,7 +23,7 @@
 			<li v-for="reply in replies">
 				<router-link :to="{name:'article',params:{id:reply.id,name:reply.author.loginname}}">{{reply.title}}</router-link>
 			</li>
-		</ul>	
+		</ul>
 		</div>
 
 
@@ -38,7 +38,7 @@
 		},
 		methods:{
 			getData(){
-				
+
 				this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.loginname}`)
 				.then(res=>{
 					this.userInfo=res.data.data;
@@ -70,6 +70,7 @@
 	.userInformation img{
 		width: 50px;
 		height: 50px;
+    margin-right: 8px;
 	}
 	.userInformation>span{
 		margin:10px;
@@ -77,7 +78,8 @@
 	}
 	.userInformation>span:nth-child(1){
 		display: flex;
-		align-items: flex-start;
+		align-items: flex-end;
+    font-weight: bold;
 	}
 	.recentTopics,.recentReplies{
 		margin:14px 0;

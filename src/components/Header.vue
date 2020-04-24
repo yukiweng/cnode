@@ -21,11 +21,10 @@
 <style scoped>
 .header{
 	background-color: rgb(68,68,68);
-	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 250px
+	padding: 16px 250px
 }
 .logo{
 	max-width:124px;
@@ -36,11 +35,10 @@ ul{
 }
 ul>li{
 	display:inline-block;
-	margin-left:14px 
+	margin-left:14px
 }
 a{
 	color:rgb(204,204,204);
-	text-decoration: none;
 	font-size: 14px;
 }
 </style>

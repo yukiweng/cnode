@@ -18,7 +18,7 @@
 	</div>
 		<div class="content markdown-body" v-html="topicData.content"></div>
 	</div>
-	
+
 	<div class="replyList" v-if="replies.length>0">
 		<p class="reply_count">{{replies.length}} 回复</p>
 		<ul>
@@ -31,19 +31,19 @@
 					<router-link :to="{name:'user_info',params:{loginname:reply.author.loginname}}">
 						<span>{{reply.author.loginname}}</span>
 					</router-link>
-								
-					
+
+
 					<span>{{index+1}}楼</span>
 					<span>{{reply.create_at|formatDate}}</span>
 					</div>
 					<span v-if="reply.ups.length>0">赞 {{reply.ups.length}}</span>
 				</div>
-				<div class="markdown-body" v-html="reply.content"></div>				
+				<div class="markdown-body" v-html="reply.content"></div>
 			</li>
 		</ul>
 	</div>
 
-</div>	
+</div>
 </template>
 
 
@@ -57,14 +57,14 @@ import markdown from 'github-markdown-css'
 			return {topicData:{},replies:[],author:{}}
 		},
 		methods:{
-			getData(){	
+			getData(){
 				var id=this.$route.params.id
 				this.$http.get('https://cnodejs.org/api/v1/topic/'+id,{
 					mdrender:'true'
 				})
-				.then(res=>{					
+				.then(res=>{
 					this.topicData=res.data.data
-					this.replies=this.topicData.replies				
+					this.replies=this.topicData.replies
 				})
 				.catch()
 			}
@@ -84,13 +84,12 @@ import markdown from 'github-markdown-css'
 <style scoped>
 .markdown-body {
     box-sizing: border-box;
-    margin: 0 16px;
-    padding: 10px 10px 0;
+    padding: 0px 38px;
 }
 
 .article{
 	background-color: rgb(225,225,225);
-	margin:20px 60px;
+	margin:0 60px;
 	width: 75%;
 	font-size: 14px;
 }
@@ -122,22 +121,25 @@ import markdown from 'github-markdown-css'
 		padding:2px 4px;
 		background-color: rgb(128,189,1);
 		color:white;
-		border-radius: 10%	
+		border-radius: 10%
 	}
 	.tab{
 		padding:2px 4px;
 		background-color: rgb(225,225,225);
 		color:grey;
-		border-radius: 10%	
+		border-radius: 10%
 	}
 	.header ul>li{
 	display: inline-block;
 	margin: 2px;
 	}
+  .content{
+    padding:20px;
+  }
 	.replyList{
 		margin:14px 0;
 	}
-	
+
 	.replyList .reply_count{
 		background-color:rgb(246,246,246);
 		padding: 10px
@@ -145,7 +147,9 @@ import markdown from 'github-markdown-css'
 	.replyList>ul>li{
 			list-style: none;
 			border-bottom: 0.5px solid rgb(225,225,225);
-			padding:10px
+			padding:10px;
+    display: flex;
+    flex-direction: column;
 	}
 	.replyList>ul>li.nice{
 		background-color: rgb(244,252,240);

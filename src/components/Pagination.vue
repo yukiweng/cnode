@@ -18,7 +18,6 @@ export default {
 	}},
 	methods:{
 		changePage(page){
-
 			if(typeof page !='number'&& typeof page!='string'){
 				switch(page.currentTarget.innerText){
 					case '首页':
@@ -44,9 +43,9 @@ export default {
 			}else if(this.currentPage==this.pages[0]&&this.currentPage!=1){
 				this.pages.unshift(this.pages[0]-1)
 				this.pages.splice(5,1)
-			}				
 			}
-			
+			}
+
 		},
 		more(e){
 				if(e.target.className=='pre'){
@@ -57,7 +56,7 @@ export default {
 				this.currentPage=this.pages[2]
 
 				}
-					
+
 		}
 
 	},
@@ -66,11 +65,11 @@ export default {
 			this.$emit('input',this.currentPage)
 		}
 	}
-	
+
 }
 </script>
 <style scoped>
-.Pagination{	
+.Pagination{
 	padding: 10px;
 }
 .current{
@@ -78,8 +77,7 @@ export default {
 	color:white;
 }
 button{
-	width:50px;
-	height: 25px;
+	padding:0.5em 0.8em;
 	background-color: white;
 	border:1px solid grey;
 	vertical-align:middle

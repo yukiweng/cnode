@@ -1,10 +1,10 @@
 <template>
 	<div class="SlideBar">
-		<div class="userInformation">
-			<p>作者</p>			
-			<span>
+		<div class="userCard">
+			<p>作者</p>
+			<span class="userInfo">
 				<router-link :to="{name:'user_info',params:{loginname:userInfo.loginname}}"><img :src="userInfo.avatar_url" alt=""></router-link>
-				<span>{{userInfo.loginname}}</span>	
+				<span>{{userInfo.loginname}}</span>
 			</span>
 			<div>
 			<span>注册积分 {{userInfo.score}}</span>
@@ -38,11 +38,6 @@
 		},
 		beforeMount(){
 			this.getData()
-		},
-		watch:{
-			'$route'(to,from){
-				this.getData()
-			}
 		}
 	}
 </script>
@@ -56,20 +51,25 @@
 	.SlideBar>*>*{
 		padding: 10px
 	}
-	.userInformation,.recentTopics{
+	.userCard,.recentTopics{
 		background-color: white;
 		margin-bottom: 14px;
 	}
-	.recentTopics>p,.userInformation>p{
+  .userInfo{
+    display: inline-flex;
+    align-items: flex-end;
+  }
+	.recentTopics>p,.userCard>p{
 		background-color: rgb(246,246,246);
 	}
-	.userInformation>div>span{
+	.userCard>div>span{
 		display: block;
 		margin:4px 0;
 	}
-	.userInformation img{
+  .userInfo img{
 		width: 55px;
-		height: 55px
+		height: 55px;
+    margin-right: 4px;
 	}
 	ul>li{
 		list-style: none;
@@ -83,6 +83,6 @@
 		white-space: nowrap;
 		overflow: hidden;
 		max-width:280px;
-		text-overflow: ellipsis;	
+		text-overflow: ellipsis;
 	}
 </style>
