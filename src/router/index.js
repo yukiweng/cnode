@@ -4,9 +4,13 @@ import App from '../App'
 import PostList from '../components/PostList'
 import Article from '../components/Article'
 import UserInfo from '../components/UserInfo'
-import SlideBar from '../components/SlideBar'
 import Pagination from '../components/Pagination'
 Vue.use(Router)
+
+var SlideBar
+if (window.screen.width > 375) {
+ SlideBar = () => import('../components/SlideBar')
+}
 
 export default new Router({
   routes: [{

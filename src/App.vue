@@ -35,4 +35,9 @@ a:hover{text-decoration:underline;}
   justify-content: center;
   margin:20px 60px;
 }
+  @media only screen and (max-width: 375px) {
+    .main{
+      margin:0;
+    }
+  }
 </style>

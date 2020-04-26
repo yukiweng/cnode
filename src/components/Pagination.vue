@@ -77,4 +77,7 @@ button{
 button:focus{
 	outline:none;
 }
+@media only screen and (max-width: 375px) {
+  button{padding:0.2em 0.5em}
+}
 </style>

@@ -143,7 +143,8 @@
     padding: 2px 4px;
     background-color: rgb(128, 189, 1);
     color: white;
-    border-radius: 10%
+    border-radius: 10%;
+    flex-shrink:0;
   }
 
   .tab {
@@ -158,5 +159,12 @@
     font-size: 16px;
     color:#333;
   }
-
+  @media only screen and (max-width: 375px) {
+    .postList{
+      width: 100vw;
+    }
+    .title{
+      font-size:14px;
+    }
+}
 </style>

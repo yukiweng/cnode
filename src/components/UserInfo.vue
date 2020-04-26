@@ -101,5 +101,16 @@
 		color:rgb(0,136,204);
 		font-size: 16px
 	}
+  @media only screen and (max-width: 375px) {
+    .UserInfo{
+      width: 100vw;
+    }
+    .userInformation,.recentTopics,.recentReplies{
+      margin:0;
+    }
+    a{
+      font-size: 14px;
+    }
+  }
 
 </style>

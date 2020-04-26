@@ -19,6 +19,7 @@
 </script>
 
 <style scoped>
+
 .header{
 	background-color: rgb(68,68,68);
 	display: flex;
@@ -41,4 +42,14 @@ a{
 	color:rgb(204,204,204);
 	font-size: 14px;
 }
+  @media only screen and (max-width: 375px){
+    .header{
+      flex-direction: column;
+      padding:10px 12px;
+    }
+    ul{
+      display: inline-flex;
+      padding-top:10px;
+    }
+  }
 </style>

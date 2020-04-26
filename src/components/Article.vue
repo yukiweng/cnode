@@ -31,8 +31,6 @@
 					<router-link :to="{name:'user_info',params:{loginname:reply.author.loginname}}">
 						<span>{{reply.author.loginname}}</span>
 					</router-link>
-
-
 					<span>{{index+1}}楼</span>
 					<span>{{reply.create_at|formatDate}}</span>
 					</div>
@@ -45,9 +43,6 @@
 
 </div>
 </template>
-
-
-
 
 <script>
 import markdown from 'github-markdown-css'
@@ -122,17 +117,18 @@ import markdown from 'github-markdown-css'
 	margin: 10px
 }
 	.top,.good{
-
 		padding:2px 4px;
 		background-color: rgb(128,189,1);
 		color:white;
-		border-radius: 10%
+		border-radius: 10%;
+    flex-shrink: 0;
 	}
 	.tab{
 		padding:2px 4px;
 		background-color: rgb(225,225,225);
 		color:grey;
-		border-radius: 10%
+		border-radius: 10%;
+    flex-shrink: 0;
 	}
 	.header ul>li{
 	display: inline-block;
@@ -176,5 +172,12 @@ import markdown from 'github-markdown-css'
 .replyList span{
 	margin-left: 8px
 }
-
+@media only screen and (max-width: 375px) {
+  .article{
+    width: 100vw;
+  }
+  .replyList{
+    margin:0;
+  }
+}
 </style>
